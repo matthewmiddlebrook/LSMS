@@ -21,6 +21,9 @@ const Header = () => (
         <LinkContainer to="/">
           <Nav.Link>Home</Nav.Link>
         </LinkContainer>
+        <LinkContainer to="/planes">
+          <Nav.Link>Planes</Nav.Link>
+        </LinkContainer>
         <NavDropdown title="Stuff" id="basic-nav-dropdown">
           <LinkContainer to="/p1">
             <NavDropdown.Item>Subpage 1</NavDropdown.Item>

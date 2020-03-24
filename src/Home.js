@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Jumbotron, Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 import "./App.css";
 
@@ -12,7 +13,9 @@ const HomePage = () => (
         calling extra attention to featured content or information.
       </p>
       <p>
-        <Button variant="primary">Learn more</Button>
+        <LinkContainer to="/planes">
+          <Button variant="primary">Plane Dashboard</Button>
+        </LinkContainer>
       </p>
     </Jumbotron>
   </Container>
