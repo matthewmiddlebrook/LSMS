@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container, CardDeck } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 import "./App.css";
 import PlaneCard from "./PlaneCard";
@@ -9,10 +9,14 @@ function PlanesPage() {
   return (
     <Container>
       <h1>Planes</h1>
-      <CardDeck>
-        <PlaneCard name="Plane 1" isActive={true}/>
-        <PlaneCard name="Plane 2" isActive={false}/>
-      </CardDeck>
+      <Row>
+        <PlaneCard id={0} />
+        <PlaneCard id={1} />
+        <PlaneCard id={2} />
+        <PlaneCard id={3} />
+        <PlaneCard id={4} />
+        <PlaneCard id={5} />
+      </Row>
     </Container>
   );
 }

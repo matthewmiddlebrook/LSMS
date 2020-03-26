@@ -1,17 +1,9 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
-
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button
-} from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 const Header = () => (
-  <Navbar bg="light" expand="lg">
+  <Navbar bg="light" expand="md" fixed="top">
     <LinkContainer to="/">
       <Navbar.Brand>LoneStar Meter Solutions</Navbar.Brand>
     </LinkContainer>

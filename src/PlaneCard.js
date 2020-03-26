@@ -1,8 +1,10 @@
 import React from "react";
-
 import { Card, Badge, Modal, Button } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 import "./App.css";
+
+import { PLANES_DATA } from "./App";
 
 function WarningModal(props) {
   return (
@@ -37,22 +39,27 @@ function PlaneCard(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <Card style={{ width: "18rem" }}>
+    <Card style={{ width: "18rem", margin: "1rem", flex: "auto" }}>
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
+        <Card.Title>{PLANES_DATA[props.id].title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          {props.isActive ? (
+          {PLANES_DATA[props.id].isActive ? (
             <Badge variant="primary">Active</Badge>
           ) : (
             <Badge variant="secondary">Inactive</Badge>
           )}
         </Card.Subtitle>
         <Card.Text>This is a test.</Card.Text>
-        <Card.Link href="#">Info</Card.Link>
+        <LinkContainer to={`/planes/${props.id}`}>
+          <Card.Link href="#">Info</Card.Link>
+        </LinkContainer>
         <Card.Link href="#" onClick={() => setModalShow(true)}>
           Archive
         </Card.Link>
       </Card.Body>
+      <Card.Footer>
+        <small className="text-muted">Last active 3 mins ago</small>
+      </Card.Footer>
 
       <WarningModal show={modalShow} onHide={() => setModalShow(false)} />
     </Card>
