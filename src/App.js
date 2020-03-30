@@ -23,12 +23,20 @@ function App() {
 }
 
 var PLANES_DATA = [
-  { title: "Plane 1", isActive: true },
-  { title: "Plane 2", isActive: false },
-  { title: "Plane 3", isActive: true },
-  { title: "Plane 4", isActive: true },
-  { title: "Plane 5", isActive: true },
-  { title: "Plane 6", isActive: false }
+  {
+    id: 0,
+    tail: "DL200",
+    type: "777-200LR",
+    nickname: "Spirit of the World",
+    isActive: true
+  },
+  {
+    id: 1,
+    tail: "N594FY",
+    type: "Denali",
+    nickname: "Red Dragon",
+    isActive: true
+  }
 ];
 
 export { PLANES_DATA };

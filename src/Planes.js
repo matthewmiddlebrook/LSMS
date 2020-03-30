@@ -12,10 +12,6 @@ function PlanesPage() {
       <Row>
         <PlaneCard id={0} />
         <PlaneCard id={1} />
-        <PlaneCard id={2} />
-        <PlaneCard id={3} />
-        <PlaneCard id={4} />
-        <PlaneCard id={5} />
       </Row>
     </Container>
   );

@@ -39,23 +39,29 @@ function PlaneCard(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <Card style={{ width: "18rem", margin: "1rem", flex: "auto" }}>
+    <Card
+      className="text-center"
+      style={{ width: "18rem", margin: "1rem", flex: "auto" }}
+    >
       <Card.Body>
-        <Card.Title>{PLANES_DATA[props.id].title}</Card.Title>
+        <Card.Title>
+          {PLANES_DATA[props.id].tail} - {PLANES_DATA[props.id].nickname}
+        </Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
-          {PLANES_DATA[props.id].isActive ? (
+          {/* {PLANES_DATA[props.id].isActive ? (
             <Badge variant="primary">Active</Badge>
           ) : (
             <Badge variant="secondary">Inactive</Badge>
-          )}
+          )} */}
+          <Badge variant="primary">{PLANES_DATA[props.id].type}</Badge>
         </Card.Subtitle>
-        <Card.Text>This is a test.</Card.Text>
+        {/* <Card.Text>This is a test.</Card.Text> */}
         <LinkContainer to={`/planes/${props.id}`}>
           <Card.Link href="#">Info</Card.Link>
         </LinkContainer>
-        <Card.Link href="#" onClick={() => setModalShow(true)}>
+        {/* <Card.Link href="#" onClick={() => setModalShow(true)}>
           Archive
-        </Card.Link>
+        </Card.Link> */}
       </Card.Body>
       <Card.Footer>
         <small className="text-muted">Last active 3 mins ago</small>
