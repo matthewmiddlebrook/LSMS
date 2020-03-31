@@ -1,10 +1,9 @@
 import React from "react";
-import { Card, Badge, Modal, Button } from "react-bootstrap";
+import { Card, Badge, Modal, Button, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 
 import "./App.css";
-
-import { PLANES_DATA } from "./App";
 
 function WarningModal(props) {
   return (
@@ -39,36 +38,71 @@ function PlaneCard(props) {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
-    <Card
+    <Button
       className="text-center"
-      style={{ width: "18rem", margin: "1rem", flex: "auto" }}
+      variant="light"
+      style={{
+        width: "18rem",
+        margin: "1rem",
+        flex: "auto",
+        padding: "0rem",
+        border: "1px solid rgba(0,0,0,.125)"
+      }}
     >
-      <Card.Body>
-        <Card.Title>
-          {PLANES_DATA[props.id].tail} - {PLANES_DATA[props.id].nickname}
-        </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          {/* {PLANES_DATA[props.id].isActive ? (
+      <Link
+        to={`/planes/${props.item.id}`}
+        style={{ color: "inherit", textDecoration: "inherit" }}
+      >
+        <Card.Header>
+          <Card.Title style={{ marginBottom: "0" }}>
+            {props.item.tail} - {props.item.nickname}
+          </Card.Title>
+          <Badge
+            variant="primary"
+            style={{
+              position: "absolute",
+              top: "auto",
+              marginTop: "4px",
+              transform: "translateX(-50%)"
+            }}
+          >
+            {props.item.type}
+          </Badge>
+        </Card.Header>
+        <Card.Body>
+          {/* <Card.Subtitle className="mb-2 text-muted">
+            {PLANES_DATA[props.id].isActive ? (
             <Badge variant="primary">Active</Badge>
           ) : (
             <Badge variant="secondary">Inactive</Badge>
-          )} */}
-          <Badge variant="primary">{PLANES_DATA[props.id].type}</Badge>
-        </Card.Subtitle>
-        {/* <Card.Text>This is a test.</Card.Text> */}
-        <LinkContainer to={`/planes/${props.id}`}>
+          )}
+            <Badge variant="primary">{props.item.type}</Badge>
+          </Card.Subtitle> */}
+          {/* <Card.Text>This is a test.</Card.Text> */}
+          {/* <LinkContainer to={`/planes/${props.item.id}`}>
           <Card.Link href="#">Info</Card.Link>
-        </LinkContainer>
-        {/* <Card.Link href="#" onClick={() => setModalShow(true)}>
+        </LinkContainer> */}
+          {/* <Card.Link href="#" onClick={() => setModalShow(true)}>
           Archive
         </Card.Link> */}
-      </Card.Body>
-      <Card.Footer>
-        <small className="text-muted">Last active 3 mins ago</small>
-      </Card.Footer>
+          <Row>
+            <Col style={{ borderRight: "1px solid #999" }}>
+              <h6>Hobbs Time</h6>
+              <div>4873.6</div>
+            </Col>
+            <Col>
+              <h6>Location</h6>
+              <div>Hamlin, TX</div>
+            </Col>
+          </Row>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted">Last active 3 months ago</small>
+        </Card.Footer>
 
-      <WarningModal show={modalShow} onHide={() => setModalShow(false)} />
-    </Card>
+        <WarningModal show={modalShow} onHide={() => setModalShow(false)} />
+      </Link>
+    </Button>
   );
 }
 

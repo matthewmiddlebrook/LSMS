@@ -8,7 +8,9 @@ import {
   Tabs,
   Tab,
   Row,
-  Button
+  Button,
+  Table,
+  Alert
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useParams, Link } from "react-router-dom";
@@ -16,9 +18,7 @@ import Icofont from "react-icofont";
 
 import "./App.css";
 
-import { PLANES_DATA } from "./App";
-
-function PlaneInfoPage() {
+function PlaneInfoPage(props) {
   let { id } = useParams();
   const [key, setKey] = useState("overview");
 
@@ -33,7 +33,7 @@ function PlaneInfoPage() {
           Back
         </Button>
       </Link>
-      <h2 style={{ display: "inline" }}>{PLANES_DATA[id].nickname}</h2>
+      <h2 style={{ display: "inline" }}>Nickname of Plane</h2>
 
       <Tabs
         id="controlled-tab-example"
@@ -72,13 +72,37 @@ function InfoCard(props) {
   );
 }
 
+function AlertDismissibleExample() {
+  const [show, setShow] = useState(true);
+
+  if (show) {
+    return (
+      <Alert
+        variant="warning"
+        style={{ marginTop: "1rem", marginBottom: "0rem" }}
+        onClose={() => setShow(false)}
+        dismissible
+      >
+        <b>Component 1</b> needs to be checked on soon.
+      </Alert>
+    );
+  }
+  return null;
+}
+
 function OverviewTab() {
   return (
     <Container>
+      <AlertDismissibleExample />
       <Row>
         <InfoCard title="Type" icon="info" info="777-200LR" />
         <InfoCard title="Hobbs" icon="speed-meter" info="4873.0" />
-        <InfoCard title="Tracked Components" icon="eye" info="3" />
+        <InfoCard
+          title="Tracked Components"
+          icon="eye"
+          info="3"
+          page="components"
+        />
         <InfoCard title="Last Active" icon="clock-time" info="3 months ago" />
         <InfoCard
           title="Location"
@@ -91,7 +115,28 @@ function OverviewTab() {
 }
 
 function ComponentsTab() {
-  return <h1>Components</h1>;
+  return (
+    <Table striped bordered hover>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Component Type</th>
+          <th>Name/Model</th>
+          <th>Current Age</th>
+          <th>Maximum Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Component Type</td>
+          <td>Name and Model</td>
+          <td>Current Age</td>
+          <td>Max Age</td>
+        </tr>
+      </tbody>
+    </Table>
+  );
 }
 
 function ChangesTab() {
