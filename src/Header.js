@@ -1,21 +1,30 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = () => (
   <Navbar bg="light" expand="md" fixed="top">
     <LinkContainer to="/">
-      <Navbar.Brand>LoneStar Meter Solutions</Navbar.Brand>
+      <Navbar.Brand>
+        <Link className="navbar-brand" to="/">
+          LoneStar Meter Solutions
+        </Link>
+      </Navbar.Brand>
     </LinkContainer>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <LinkContainer to="/">
-          <Nav.Link>Home</Nav.Link>
-        </LinkContainer>
-        <LinkContainer to="/planes">
-          <Nav.Link>Planes</Nav.Link>
-        </LinkContainer>
+        <Nav.Item>
+          <NavLink className="nav-link" exact to={"/"}>
+            Home
+          </NavLink>
+        </Nav.Item>
+        <Nav.Item>
+          <NavLink className="nav-link" exact to={"/planes"}>
+            Planes
+          </NavLink>
+        </Nav.Item>
         <NavDropdown title="Stuff" id="basic-nav-dropdown">
           <LinkContainer to="/p1">
             <NavDropdown.Item>Subpage 1</NavDropdown.Item>
@@ -27,12 +36,16 @@ const Header = () => (
             <NavDropdown.Item>Subpage 3</NavDropdown.Item>
           </LinkContainer>
         </NavDropdown>
-        <LinkContainer to="/about">
-          <Nav.Link>About</Nav.Link>
-        </LinkContainer>
-        <LinkContainer to="/contact">
-          <Nav.Link>Contact</Nav.Link>
-        </LinkContainer>
+        <Nav.Item>
+          <NavLink className="nav-link" exact to={"/about"}>
+            About
+          </NavLink>
+        </Nav.Item>
+        <Nav.Item>
+          <NavLink className="nav-link" exact to={"/contact"}>
+            Contact
+          </NavLink>
+        </Nav.Item>
       </Nav>
     </Navbar.Collapse>
   </Navbar>
