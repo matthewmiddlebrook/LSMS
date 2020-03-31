@@ -8,9 +8,11 @@ import {
   Tabs,
   Tab,
   Row,
+  Col,
   Button,
   Table,
-  Alert
+  Alert,
+  ProgressBar
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useParams, Link } from "react-router-dom";
@@ -24,16 +26,25 @@ function PlaneInfoPage(props) {
 
   return (
     <Container>
-      <Link to="/planes">
-        <Button
-          style={{ marginBottom: "1rem", marginRight: "1rem" }}
-          variant="outline-secondary"
-        >
-          <Icofont icon="arrow-left" />
-          Back
-        </Button>
-      </Link>
-      <h2 style={{ display: "inline" }}>Nickname of Plane</h2>
+      <Row style={{ marginBottom: "1rem" }}>
+        <Col md="auto" xs={{ span: "6" }}>
+          <Link to="/planes">
+            <Button variant="outline-secondary">
+              <Icofont icon="arrow-left" /> Back
+            </Button>
+          </Link>
+        </Col>
+        <Col md={{ span: true }} xs={{ order: 2, span: "auto" }}>
+          <h2 style={{ display: "inline" }}>Nickname of Plane</h2>
+        </Col>
+        <Col md={{ order: 2, span: "auto" }} xs={{ order: 1, span: "6" }}>
+          <Link to="/planes">
+            <Button style={{ float: "right" }} variant="outline-secondary">
+              <Icofont icon="gear" /> Settings
+            </Button>
+          </Link>
+        </Col>
+      </Row>
 
       <Tabs
         id="controlled-tab-example"
@@ -94,7 +105,7 @@ function OverviewTab() {
   return (
     <Container>
       <AlertDismissibleExample />
-      <Row>
+      <Row style={{}}>
         <InfoCard title="Type" icon="info" info="777-200LR" />
         <InfoCard title="Hobbs" icon="speed-meter" info="4873.0" />
         <InfoCard
