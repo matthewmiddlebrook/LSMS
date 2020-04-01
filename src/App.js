@@ -36,6 +36,13 @@ var PLANES_DATA = [
     type: "Denali",
     nickname: "Red Dragon",
     isActive: true
+  },
+  {
+    id: 2,
+    tail: "N594FY",
+    type: "Denali",
+    nickname: "Red Dragon",
+    isActive: true
   }
 ];
 

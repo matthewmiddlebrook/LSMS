@@ -14,6 +14,8 @@ import {
   Alert,
   ProgressBar
 } from "react-bootstrap";
+import BootstrapTable from "react-bootstrap-table-next";
+
 import { LinkContainer } from "react-router-bootstrap";
 import { useParams, Link } from "react-router-dom";
 import Icofont from "react-icofont";
@@ -126,8 +128,52 @@ function OverviewTab() {
 }
 
 function ComponentsTab() {
+  const products = [
+    {
+      id: "1",
+      name: "Component 1",
+      curAge: 10,
+      maxAge: 15
+    },
+    {
+      id: "1",
+      name: "Component 1",
+      curAge: 10,
+      maxAge: 15
+    },
+    {
+      id: "1",
+      name: "Component 1",
+      curAge: 10,
+      maxAge: 15
+    }
+  ];
+  const columns = [
+    {
+      dataField: "id",
+      text: "Component ID"
+    },
+    {
+      dataField: "name",
+      text: "Name/Model"
+    },
+    {
+      dataField: "curAge",
+      text: "Current Age"
+    },
+    {
+      dataField: "maxAge",
+      text: "Maximum Age"
+    }
+  ];
+
   return (
-    <Table striped bordered hover>
+    <div>
+      <Button variant="secondary" style={{ float: "right", margin: "1rem" }}>
+        Add Component
+      </Button>
+      <BootstrapTable keyField="id" data={products} columns={columns} />
+      {/* <Table responsive striped hover>
       <thead>
         <tr>
           <th>#</th>
@@ -138,6 +184,7 @@ function ComponentsTab() {
         </tr>
       </thead>
       <tbody>
+        <LinkContainer to="">
         <tr>
           <td>1</td>
           <td>Component Type</td>
@@ -145,8 +192,10 @@ function ComponentsTab() {
           <td>Current Age</td>
           <td>Max Age</td>
         </tr>
+        </LinkContainer>
       </tbody>
-    </Table>
+    </Table> */}
+    </div>
   );
 }
 
