@@ -1,7 +1,7 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { NavLink, Link } from "react-router-dom";
 
 const Header = () => (
   <Navbar bg="light" expand="md" fixed="top">

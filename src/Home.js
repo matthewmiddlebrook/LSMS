@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Jumbotron, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-import "./App.css";
-
 const HomePage = () => (
   <Container fluid>
     <Jumbotron>

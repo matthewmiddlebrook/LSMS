@@ -5,3 +5,7 @@
 .toast {
   margin: 0 auto;
 }
+
+.react-bootstrap-table table {
+  table-layout: auto;
+}
