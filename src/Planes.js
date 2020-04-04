@@ -45,29 +45,29 @@ function PlanesPage() {
       );
   }, []);
 
-  if (error) {
-    console.log(error);
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return (
-      <Container>
-        <h1>Planes</h1>
-        <LoadingScreen />
-      </Container>
-    );
-  } else {
-    return (
-      <Container>
-        <h1>Planes</h1>
+  function GetContent() {
+    if (error) {
+      return <p>Error: {error.message}</p>;
+    } else if (!isLoaded) {
+      return <LoadingScreen />;
+    } else {
+      return (
         <Row>
           {items.map(item => (
             <PlaneCard item={item} key={item.id} />
           ))}
           <PlanePlaceholder />
         </Row>
-      </Container>
-    );
+      );
+    }
   }
+
+  return (
+    <Container>
+      <h1>Planes</h1>
+      <GetContent />
+    </Container>
+  );
 }
 
 export default PlanesPage;

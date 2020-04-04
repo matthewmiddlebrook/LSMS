@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Badge, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
@@ -7,6 +7,48 @@ import Moment from "react-moment";
 
 function PlaneCard(props) {
   // const [modalShow, setModalShow] = React.useState(false);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [locationName, setLocationName] = useState([]);
+
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${props.item.lastGPS._longitude},${props.item.lastGPS._latitude}.json?access_token=${process.env.REACT_APP_MAPBOX_KEY}&types=place&country=US`
+    )
+      .then(res => res.json())
+      .then(
+        result => {
+          setIsLoaded(true);
+          setLocationName(result);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        error => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
+
+  function GetLocationName() {
+    return(<div>N/A</div>);
+    // if (error) {
+    //   console.log(error);
+    //   return <div>N/A</div>;
+    // } else if (!isLoaded) {
+    //   return <div>Loading</div>;
+    // } else {
+    //   if (locationName.length != 0 && locationName.features.length != 0) {
+    //     return <div>{locationName.features[0].place_name}</div>
+    //   } else {
+    //     return <div>N/A</div>
+    //   }
+    // }
+  }
 
   return (
     <Button
@@ -55,7 +97,7 @@ function PlaneCard(props) {
             <Col>
               <h6>Location</h6>
               <div>
-                {props.item.lastGPS._latitude}, {props.item.lastGPS._longitude}
+                <GetLocationName />
               </div>
             </Col>
           </Row>
