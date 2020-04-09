@@ -16,7 +16,9 @@ function PlaneCard(props) {
   // similar to componentDidMount()
   useEffect(() => {
     fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${props.item.lastGPS._longitude},${props.item.lastGPS._latitude}.json?access_token=${process.env.REACT_APP_MAPBOX_KEY}&types=place&country=US`
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${props.item.lastGPS._longitude},${props.item.lastGPS._latitude}.json?access_token=${process.env.REACT_APP_MAPBOX_KEY}`
+      + '&types=place'
+      + '&country=US'
     )
       .then(res => res.json())
       .then(
@@ -34,20 +36,22 @@ function PlaneCard(props) {
       );
   }, []);
 
+
+  // THIS NEEDS ERROR CATCHING!!!
   function GetLocationName() {
-    return(<div>N/A</div>);
-    // if (error) {
-    //   console.log(error);
-    //   return <div>N/A</div>;
-    // } else if (!isLoaded) {
-    //   return <div>Loading</div>;
-    // } else {
-    //   if (locationName.length != 0 && locationName.features.length != 0) {
-    //     return <div>{locationName.features[0].place_name}</div>
-    //   } else {
-    //     return <div>N/A</div>
-    //   }
-    // }
+    if (error) {
+      console.log(error);
+      return <div>N/A</div>;
+    } else if (!isLoaded) {
+      return <div>Loading</div>;
+    } else {
+      console.log(locationName);
+      if (locationName.length !== 0 && locationName.features.length !== 0) {
+      return <div>{locationName.features[0].text}, {locationName.features[0].context[0].text}</div>
+      } else {
+        return <div>N/A</div>
+      }
+    }
   }
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
+import { Helmet } from 'react-helmet';
 
 import PlaneCard from "./Components/PlaneCard";
 import LoadingScreen from "./Components/LoadingScreen";
@@ -64,6 +65,9 @@ function PlanesPage() {
 
   return (
     <Container>
+      <Helmet>
+        <title>LSMS - Planes</title>
+      </Helmet>
       <h1>Planes</h1>
       <GetContent />
     </Container>

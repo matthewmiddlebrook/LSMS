@@ -10,7 +10,7 @@ import PlaneInfoPage from "./PlaneInfo";
 function App() {
   return (
     <BrowserRouter>
-      <div style={{ paddingTop: "5rem", paddingBottom: "2rem" }}>
+      <div style={{ paddingTop: "6rem", paddingBottom: "2rem" }}>
         <Header />
         <Route exact path="/" component={HomePage} />
         <Route path="/about" component={AboutPage} />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Tabs, Tab, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Icofont from "react-icofont";
+import { Helmet } from 'react-helmet';
 
 import ChangesTab from "./Components/Tabs/ChangesTab";
 import LocationsTab from "./Components/Tabs/LocationsTab";
@@ -15,6 +16,9 @@ function PlaneInfoPage(props) {
 
   return (
     <Container>
+      <Helmet>
+        <title>LSMS - {item.name}</title>
+      </Helmet>
       <Row style={{ marginBottom: "1rem" }}>
         <Col md="auto" xs={{ span: "6" }}>
           <Link to="/planes">
@@ -42,16 +46,16 @@ function PlaneInfoPage(props) {
         mountOnEnter
       >
         <Tab eventKey="overview" title="Overview">
-          <OverviewTab />
+          <OverviewTab item={item} />
         </Tab>
         <Tab eventKey="components" title="Components">
           <ComponentsTab item={item} />
         </Tab>
         <Tab eventKey="changes" title="Changes">
-          <ChangesTab />
+          <ChangesTab item={item} />
         </Tab>
         <Tab eventKey="locations" title="Locations">
-          <LocationsTab />
+          <LocationsTab item={item} />
         </Tab>
       </Tabs>
     </Container>
