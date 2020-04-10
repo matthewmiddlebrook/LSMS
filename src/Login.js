@@ -2,12 +2,20 @@ import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import Layout from "./Components/Layout";
 
-function LoginPage() {
+// https://reacttraining.com/react-router/web/example/auth-workflow
+
+function LoginPage(props) {
+
+  function submitForm(e) {
+    e.preventDefault();
+    console.log(e);
+    props.history.push('/');
+  }
 
   return (
     <Layout>
       <h1>Login</h1>
-      <Form>
+      <Form onSubmit={submitForm.bind(this)}>
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
             Email
