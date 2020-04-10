@@ -10,21 +10,26 @@ const Styles = styled.div`
     // padding: 20px;
   }
 
-  .navbar-brand{
+  .navbar-brand {
     color: white;
-    font-size: 30px;
+    // font-size: 30px;
   }
 
-  .nav-link, .dropdown-item {
+  .nav-link, 
+  .dropdown-item {
     position: relative;
   }
 
-  .dropdown-menu, .dropdown-item, .dropdown-item.active {
+  .dropdown-menu, 
+  .dropdown-item, 
+  .dropdown-item.active {
     background-color: #2975ab;
   }
 
-  .navbar-light .navbar-nav .nav-link, .dropdown-item  {
-    font-size: 18px;
+  .navbar-light .navbar-nav .nav-link, 
+  .dropdown-item, 
+  .navbar-text  {
+    // font-size: 18px;
     color: white;
   }
 
@@ -32,7 +37,13 @@ const Styles = styled.div`
     font-weight: bold;
   }
 
-  .nav-link:before, .dropdown-item:before {
+  .navbar-light .navbar-nav .active:before {
+    visibility: visible;
+    transform: scaleX(.8);
+  }
+
+  .nav-link:before, 
+  .dropdown-item:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -44,9 +55,11 @@ const Styles = styled.div`
     transform: scaleX(0);
     transition: all 0.3s ease-in-out;
   }
-  .nav-link:hover:before, .dropdown-item:hover:before {
+  
+  .nav-link:hover:before, 
+  .dropdown-item:hover:before {
     visibility: visible;
-    transform: scaleX(1);
+    transform: scaleX(.8);
   }
 `;
 
@@ -60,7 +73,7 @@ const Header = () => (
         </Link>
         </Navbar.Brand>
       </LinkContainer>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Toggle className="navbar-dark" aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Item>
@@ -73,7 +86,7 @@ const Header = () => (
               Planes
           </NavLink>
           </Nav.Item>
-          <NavDropdown title="Stuff" id="basic-nav-dropdown">
+          {/* <NavDropdown title="Stuff" id="basic-nav-dropdown">
             <LinkContainer to="/p1">
               <NavDropdown.Item>Subpage 1</NavDropdown.Item>
             </LinkContainer>
@@ -83,7 +96,7 @@ const Header = () => (
             <LinkContainer to="/p3">
               <NavDropdown.Item>Subpage 3</NavDropdown.Item>
             </LinkContainer>
-          </NavDropdown>
+          </NavDropdown> */}
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/about"}>
               About
@@ -92,6 +105,13 @@ const Header = () => (
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/contact"}>
               Contact
+          </NavLink>
+          </Nav.Item>
+        </Nav>
+        <Nav>
+          <Nav.Item>
+            <NavLink className="nav-link" exact to={"/login"}>
+              Login
           </NavLink>
           </Nav.Item>
         </Nav>

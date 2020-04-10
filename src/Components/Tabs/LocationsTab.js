@@ -86,8 +86,8 @@ function LocationsTab() {
       <Mapbox
         locations={locations}
         style={{
-          height: "20rem",
-          marginBottom: "2rem"
+          height: "20em",
+          marginBottom: "2em"
         }}
       />
       <div>

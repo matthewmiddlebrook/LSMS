@@ -1,10 +1,10 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import Layout from "./Components/Layout";
 
 const AboutPage = () => (
-  <Container>
+  <Layout>
     <h1>About</h1>
-  </Container>
+  </Layout>
 );
 
 export default AboutPage;

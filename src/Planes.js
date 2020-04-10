@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { Helmet } from 'react-helmet';
+import Layout from "./Components/Layout";
 
 import PlaneCard from "./Components/PlaneCard";
 import LoadingScreen from "./Components/LoadingScreen";
@@ -9,10 +10,10 @@ function PlanePlaceholder(props) {
   return (
     <div
       style={{
-        width: "15rem",
+        width: "15em",
         flex: "auto",
-        margin: "1rem",
-        padding: "0rem"
+        margin: "1em",
+        padding: "0em"
       }}
     />
   );
@@ -64,13 +65,13 @@ function PlanesPage() {
   }
 
   return (
-    <Container>
+    <Layout>
       <Helmet>
         <title>LSMS - Planes</title>
       </Helmet>
       <h1>Planes</h1>
       <GetContent />
-    </Container>
+    </Layout>
   );
 }
 

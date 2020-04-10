@@ -19,7 +19,7 @@ function PlaneInfoPage(props) {
       <Helmet>
         <title>LSMS - {item.name}</title>
       </Helmet>
-      <Row style={{ marginBottom: "1rem" }}>
+      <Row style={{ marginBottom: "1em" }}>
         <Col md="auto" xs={{ span: "6" }}>
           <Link to="/planes">
             <Button variant="outline-secondary">

@@ -59,10 +59,10 @@ function PlaneCard(props) {
       className="text-center"
       variant="light"
       style={{
-        width: "15rem",
+        width: "15em",
         flex: "auto",
-        margin: "1rem",
-        padding: "0rem",
+        margin: "1em",
+        padding: "0em",
         display: "grid",
         position: "relative",
         alignItems: "stretch",
@@ -106,7 +106,7 @@ function PlaneCard(props) {
             </Col>
           </Row>
         </Card.Body>
-        <div style={{ height: "2.25rem" }} />
+        <div style={{ height: "2.25em" }} />
         <Card.Footer
           style={{
             background: "none",

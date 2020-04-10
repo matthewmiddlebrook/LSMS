@@ -4,7 +4,7 @@ import Icofont from "react-icofont";
 
 function PlaneOverviewCard(props) {
   return (
-    <Card bg="light" text="dark" style={{ width: "12rem", margin: "1rem" }}>
+    <Card bg="light" text="dark" style={{ width: "12em", margin: "1em" }}>
       <Card.Body>
         <Icofont icon={props.icon} />
         <Card.Text />

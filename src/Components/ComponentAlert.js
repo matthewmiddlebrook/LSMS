@@ -7,7 +7,7 @@ function ComponentAlert() {
     return (
       <Alert
         variant="warning"
-        style={{ marginTop: "1rem", marginBottom: "0rem" }}
+        style={{ marginTop: "1em", marginBottom: "0em" }}
         onClose={() => setShow(false)}
         dismissible
       >

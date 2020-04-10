@@ -78,7 +78,7 @@ function ComponentsTab(props) {
   } else {
     return (
       <div>
-        <Button variant="secondary" style={{ float: "right", margin: "1rem" }}>
+        <Button variant="secondary" style={{ float: "right", margin: "1em" }}>
           Add Component
         </Button>
         <div>
