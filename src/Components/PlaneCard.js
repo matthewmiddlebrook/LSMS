@@ -47,7 +47,7 @@ function PlaneCard(props) {
     } else {
       console.log(locationName);
       if (locationName.length !== 0 && locationName.features.length !== 0) {
-      return <div>{locationName.features[0].text}, {locationName.features[0].context[0].text}</div>
+        return <div>{locationName.features[0].text}, {locationName.features[0].context[0].text}</div>
       } else {
         return <div>N/A</div>
       }
@@ -120,11 +120,6 @@ function PlaneCard(props) {
           <small className="text-muted">
             Last active{" "}
             <Moment fromNow unix>
-              {props.item.lastActiveTime._seconds +
-                props.item.lastActiveTime._nanoseconds / 1000000000}
-            </Moment>
-            ,{" "}
-            <Moment format="L, LT" unix>
               {props.item.lastActiveTime._seconds +
                 props.item.lastActiveTime._nanoseconds / 1000000000}
             </Moment>

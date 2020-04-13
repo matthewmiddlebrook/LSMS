@@ -21,11 +21,9 @@ function PlaneInfoPage(props) {
       </Helmet>
       <Row style={{ marginBottom: "1em" }}>
         <Col md="auto" xs={{ span: "6" }}>
-          <Link to="/planes">
-            <Button variant="outline-secondary">
+            <Button variant="outline-secondary" onClick={props.history.goBack}>
               <Icofont icon="arrow-left" /> Back
             </Button>
-          </Link>
         </Col>
         <Col md={{ span: true }} xs={{ order: 2, span: "auto" }}>
           <h2 style={{ display: "inline" }}>{item.name}</h2>
@@ -46,7 +44,7 @@ function PlaneInfoPage(props) {
         mountOnEnter
       >
         <Tab eventKey="overview" title="Overview">
-          <OverviewTab item={item} />
+          <OverviewTab item={item} setKey={setKey} />
         </Tab>
         <Tab eventKey="components" title="Components">
           <ComponentsTab item={item} />
