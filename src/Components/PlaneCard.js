@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Badge, Button, Row, Col } from "react-bootstrap";
+import { Card, Badge, Button, Row, Col, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 
@@ -36,20 +36,41 @@ function PlaneCard(props) {
       );
   }, []);
 
+  function CardTooltip(props) {
+    return (
+      <OverlayTrigger
+        placement="bottom"
+        delay={{ show: 250, hide: 400 }}
+        overlay={<Tooltip id="button-tooltip" {...props}>
+          {props.tooltip}
+        </Tooltip>}
+      >
+        <div>{props.children}</div>
+      </OverlayTrigger>
+    )
+  }
 
-  // THIS NEEDS ERROR CATCHING!!!
+  // THIS NEEDS BETTER ERROR CATCHING!!! I think...
   function GetLocationName() {
     if (error) {
       console.log(error);
-      return <div>N/A</div>;
+      return <div>Error</div>;
     } else if (!isLoaded) {
       return <div>Loading</div>;
     } else {
       console.log(locationName);
       if (locationName.length !== 0 && locationName.features.length !== 0) {
-        return <div>{locationName.features[0].text}, {locationName.features[0].context[0].text}</div>
+        return (
+          <CardTooltip tooltip={`${props.item.lastGPS._latitude}, ${props.item.lastGPS._longitude}`}>
+            {locationName.features[0].text}, {locationName.features[0].context[0].text}
+          </CardTooltip>
+        )
       } else {
-        return <div>N/A</div>
+        return (
+          <CardTooltip tooltip={`${props.item.lastGPS._latitude}, ${props.item.lastGPS._longitude}`}>
+            N/A
+          </CardTooltip>
+        )
       }
     }
   }
@@ -71,7 +92,7 @@ function PlaneCard(props) {
     >
       <Link
         to={{
-          pathname: `/planes/${props.item.id}`,
+          pathname: `/planes/${props.item.id}/overview`,
           state: { item: props.item }
         }}
         style={{ color: "inherit", textDecoration: "inherit" }}

@@ -23,7 +23,7 @@ function OverviewTab(props) {
   return (
     <Container>
       <ComponentAlert />
-      <Row style={{display: "flex"}}>
+      <Row style={{ display: "flex" }}>
         <PlaneOverviewCard title="Type" icon="info" info={props.item.model} />
         <PlaneOverviewCard title="Hobbs" icon="speed-meter" info={props.item.hobbsTime} />
         <PlaneOverviewCard
@@ -48,9 +48,9 @@ function OverviewTab(props) {
           setKey={props.setKey}
           tab="locations"
         />
-        <PlaneOverviewCardPlaceholder/>
-        <PlaneOverviewCardPlaceholder/>
-        <PlaneOverviewCardPlaceholder/>
+        <PlaneOverviewCardPlaceholder />
+        <PlaneOverviewCardPlaceholder />
+        <PlaneOverviewCardPlaceholder />
       </Row>
     </Container>
   );

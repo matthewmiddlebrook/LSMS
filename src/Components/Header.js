@@ -70,7 +70,7 @@ const Header = () => (
         <Navbar.Brand>
           <Link className="navbar-brand" to="/">
             LoneStar Meter Solutions
-        </Link>
+          </Link>
         </Navbar.Brand>
       </LinkContainer>
       <Navbar.Toggle className="navbar-dark" aria-controls="basic-navbar-nav" />
@@ -79,12 +79,12 @@ const Header = () => (
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/"}>
               Home
-          </NavLink>
+            </NavLink>
           </Nav.Item>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/planes"}>
               Planes
-          </NavLink>
+            </NavLink>
           </Nav.Item>
           {/* <NavDropdown title="Stuff" id="basic-nav-dropdown">
             <LinkContainer to="/p1">
@@ -100,19 +100,19 @@ const Header = () => (
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/about"}>
               About
-          </NavLink>
+            </NavLink>
           </Nav.Item>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/contact"}>
               Contact
-          </NavLink>
+            </NavLink>
           </Nav.Item>
         </Nav>
         <Nav>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/login"}>
               Login
-          </NavLink>
+            </NavLink>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>

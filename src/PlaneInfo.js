@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { Route, Switch } from 'react-router';
 import { Container, Tabs, Tab, Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { BrowserRouter, NavLink, Link } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { Helmet } from 'react-helmet';
 
@@ -12,7 +14,14 @@ import OverviewTab from "./Components/Tabs/OverviewTab";
 function PlaneInfoPage(props) {
   const [key, setKey] = useState("overview");
 
-  const item = props.location.state.item;
+  var item;
+
+  if (props.location.state == null) {
+    props.history.push("/planes");
+    return null;
+  } else {
+    item = props.location.state.item;
+  }
 
   return (
     <Container>
@@ -21,15 +30,17 @@ function PlaneInfoPage(props) {
       </Helmet>
       <Row style={{ marginBottom: "1em" }}>
         <Col md="auto" xs={{ span: "6" }}>
-            <Button variant="outline-secondary" onClick={props.history.goBack}>
+          <Link to="/planes">
+            <Button variant="outline-secondary" /* onClick={props.history.goBack} */ >
               <Icofont icon="arrow-left" /> Back
             </Button>
+          </Link>
         </Col>
         <Col md={{ span: true }} xs={{ order: 2, span: "auto" }}>
           <h2 style={{ display: "inline" }}>{item.name}</h2>
         </Col>
         <Col md={{ order: 2, span: "auto" }} xs={{ order: 1, span: "6" }}>
-          <Link to="/planes">
+          <Link to={{ pathname: `/planes/${item.id}/settings`, state: { item: item } }}>
             <Button style={{ float: "right" }} variant="outline-secondary">
               <Icofont icon="gear" /> Settings
             </Button>
@@ -37,7 +48,7 @@ function PlaneInfoPage(props) {
         </Col>
       </Row>
 
-      <Tabs
+      {/* <Tabs
         id="controlled-tab-example"
         activeKey={key}
         onSelect={k => setKey(k)}
@@ -55,8 +66,38 @@ function PlaneInfoPage(props) {
         <Tab eventKey="locations" title="Locations">
           <LocationsTab item={item} />
         </Tab>
-      </Tabs>
-    </Container>
+      </Tabs> */}
+
+      <Nav variant="tabs" defaultActiveKey="/home">
+        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/overview`, state: { item: item } }}>
+          Overview
+        </NavLink>
+        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/components`, state: { item: item } }}>
+          Components
+        </NavLink>
+        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/changes`, state: { item: item } }}>
+          Changes
+        </NavLink>
+        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/locations`, state: { item: item } }}>
+          Locations
+        </NavLink>
+      </Nav>
+      
+      <Switch>
+        <Route path="/planes/:id/overview">
+          <OverviewTab item={item} />
+        </Route>
+        <Route path="/planes/:id/components">
+          <ComponentsTab item={item} />
+        </Route>
+        <Route path="/planes/:id/changes">
+          <ChangesTab item={item} />
+        </Route>
+        <Route path="/planes/:id/locations">
+          <LocationsTab item={item} />
+        </Route>
+      </Switch>
+    </Container >
   );
 }
 
