@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
+import { BrowserRouter, NavLink, Link } from "react-router-dom";
 import { Helmet } from 'react-helmet';
-import Layout from "./Components/Layout";
+import Icofont from "react-icofont";
 
+import Layout from "./Components/Layout";
 import PlaneCard from "./Components/PlaneCard";
 import LoadingScreen from "./Components/LoadingScreen";
 
@@ -69,7 +71,13 @@ function PlanesPage() {
       <Helmet>
         <title>LSMS - Planes</title>
       </Helmet>
-      <h1>Planes</h1>
+
+      <h1 style={{ display: "inline" }}>Planes</h1>
+      <Link to="/planes/add">
+        <Button style={{ float: "right" }} variant="outline-secondary">
+          <Icofont icon="plus" /> Add
+        </Button>
+      </Link>
       <GetContent />
     </Layout>
   );

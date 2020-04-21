@@ -40,7 +40,7 @@ function PlaneInfoPage(props) {
           <h2 style={{ display: "inline" }}>{item.name}</h2>
         </Col>
         <Col md={{ order: 2, span: "auto" }} xs={{ order: 1, span: "6" }}>
-          <Link to={{ pathname: `/planes/${item.id}/settings`, state: { item: item } }}>
+          <Link to={{ pathname: `/plane/${item.id}/settings`, state: { item: item } }}>
             <Button style={{ float: "right" }} variant="outline-secondary">
               <Icofont icon="gear" /> Settings
             </Button>
@@ -69,31 +69,31 @@ function PlaneInfoPage(props) {
       </Tabs> */}
 
       <Nav variant="tabs" defaultActiveKey="/home">
-        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/overview`, state: { item: item } }}>
+        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/overview`, state: { item: item } }}>
           Overview
         </NavLink>
-        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/components`, state: { item: item } }}>
+        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/components`, state: { item: item } }}>
           Components
         </NavLink>
-        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/changes`, state: { item: item } }}>
+        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/changes`, state: { item: item } }}>
           Changes
         </NavLink>
-        <NavLink className="nav-link" to={{ pathname: `/planes/${item.id}/locations`, state: { item: item } }}>
+        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/locations`, state: { item: item } }}>
           Locations
         </NavLink>
       </Nav>
       
       <Switch>
-        <Route path="/planes/:id/overview">
+        <Route path="/plane/:id/overview">
           <OverviewTab item={item} />
         </Route>
-        <Route path="/planes/:id/components">
+        <Route path="/plane/:id/components">
           <ComponentsTab item={item} />
         </Route>
-        <Route path="/planes/:id/changes">
+        <Route path="/plane/:id/changes">
           <ChangesTab item={item} />
         </Route>
-        <Route path="/planes/:id/locations">
+        <Route path="/plane/:id/locations">
           <LocationsTab item={item} />
         </Route>
       </Switch>

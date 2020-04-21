@@ -6,6 +6,7 @@ import HomePage from "./Home";
 import AboutPage from "./About";
 import LoginPage from "./Login";
 import PlanesPage from "./Planes";
+import AddPlanePage from "./AddPlane";
 import PlaneInfoPage from "./PlaneInfo";
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <Route path="/about" component={AboutPage} />
         <Route path="/login" component={LoginPage} />
         <Route exact path="/planes" component={PlanesPage} />
-        <Route path="/planes/:id" component={PlaneInfoPage} />
+        <Route path="/planes/add" component={AddPlanePage} />
+        <Route path="/plane/:id" component={PlaneInfoPage} />
       </div>
     </BrowserRouter>
   );

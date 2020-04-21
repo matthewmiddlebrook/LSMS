@@ -92,7 +92,7 @@ function PlaneCard(props) {
     >
       <Link
         to={{
-          pathname: `/planes/${props.item.id}/overview`,
+          pathname: `/plane/${props.item.id}/overview`,
           state: { item: props.item }
         }}
         style={{ color: "inherit", textDecoration: "inherit" }}
