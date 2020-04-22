@@ -6,6 +6,7 @@ import { Nav } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { Helmet } from 'react-helmet';
 
+import Layout from "./Components/Layout";
 import ChangesTab from "./Components/Tabs/ChangesTab";
 import LocationsTab from "./Components/Tabs/LocationsTab";
 import ComponentsTab from "./Components/Tabs/ComponentsTab";
@@ -24,7 +25,7 @@ function PlaneInfoPage(props) {
   }
 
   return (
-    <Container>
+    <Layout>
       <Helmet>
         <title>LSMS - {item.name}</title>
       </Helmet>
@@ -82,7 +83,7 @@ function PlaneInfoPage(props) {
           Locations
         </NavLink>
       </Nav>
-      
+
       <Switch>
         <Route path="/plane/:id/overview">
           <OverviewTab item={item} />
@@ -97,7 +98,7 @@ function PlaneInfoPage(props) {
           <LocationsTab item={item} />
         </Route>
       </Switch>
-    </Container >
+    </Layout>
   );
 }
 

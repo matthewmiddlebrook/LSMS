@@ -18,7 +18,7 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
-        <div style={{ paddingTop: "5em", paddingBottom: "0em" }}>
+        <div style={{ paddingTop: "4em", paddingBottom: "0em" }}>
           <Header />
           <Route exact path="/" component={HomePage} />
           <Route path="/products" component={Products} />

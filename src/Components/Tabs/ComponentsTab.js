@@ -83,6 +83,7 @@ function ComponentsTab(props) {
         </Button>
         <div>
           <BootstrapTable
+            bootstrap4
             keyField="id"
             columns={columns}
             data={items}

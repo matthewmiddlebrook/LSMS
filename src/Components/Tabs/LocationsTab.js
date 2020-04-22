@@ -92,6 +92,7 @@ function LocationsTab() {
       />
       <div>
         <BootstrapTable
+          bootstrap4
           keyField="planeId"
           columns={columns}
           data={locations}

@@ -22,7 +22,7 @@ function OverviewTab(props) {
   console.log(props.item);
   return (
     <Container>
-      <ComponentAlert />
+      {/* <ComponentAlert /> */}
       <Row style={{ display: "flex" }}>
         <PlaneOverviewCard title="Type" icon="info" info={props.item.model} />
         <PlaneOverviewCard title="Hobbs" icon="speed-meter" info={props.item.hobbsTime} />

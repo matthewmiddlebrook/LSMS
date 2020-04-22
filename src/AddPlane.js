@@ -10,6 +10,7 @@ const schema = yup.object({
   name: yup.string().required(),
   model: yup.string().required(),
   manufacturer: yup.string().required(),
+  deviceId: yup.string().required(),
   tailNumber: yup.string().required(),
 });
 
@@ -20,6 +21,7 @@ function AddPlanePage(props) {
       "name": "",
       "model": "",
       "manufacturer": "",
+      "deviceId": "",
       "tailNumber": "",
       "status": "active"
     },
@@ -110,7 +112,20 @@ function AddPlanePage(props) {
               placeholder="Boeing"
             />
             <Form.Control.Feedback type="invalid">Enter a valid manufacturer.</Form.Control.Feedback>
+          </Col>
+        </Form.Group>
 
+        <Form.Group as={Row}>
+          <Form.Label column md={2} sm={3}>Device ID</Form.Label>
+          <Col md={10} sm={9}>
+            <Form.Control
+              type="text"
+              name="deviceId"
+              onChange={formik.handleChange}
+              isInvalid={formik.errors.deviceId}
+              placeholder="123456"
+            />
+            <Form.Control.Feedback type="invalid">Enter a valid device ID.</Form.Control.Feedback>
           </Col>
         </Form.Group>
 

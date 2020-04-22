@@ -10,7 +10,7 @@ const Styles = styled.div`
   }
   .overview2 {
     width: 60%;
-    float: right;
+    margin-left: auto;
   }
 `;
 const AboutPage = () => (

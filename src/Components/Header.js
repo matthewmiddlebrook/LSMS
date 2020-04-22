@@ -7,55 +7,59 @@ import styled from "styled-components";
 const Styles = styled.div`
   .navbar {
     background-color: #2a77af;
-    padding: 20px;
+    // padding: 20px;
   }
 
-  .navbar-brand,
-  navbar-nav,
-  nav-link {
+  .navbar-brand {
     color: white;
-    font-size: 30px;
-    &:hover {
-      color: black;
-    }
+    // font-size: 30px;
   }
 
-  .nav-link-ltr:hover::before {
-    width: 100%;
-  }
-  .nav-link {
-    font-size: 18px;
+  .nav-link, 
+  .dropdown-item {
     position: relative;
+  }
+
+  .dropdown-menu, 
+  .dropdown-item, 
+  .dropdown-item.active {
+    background-color: #2975ab;
+  }
+
+  .navbar-light .navbar-nav .nav-link, 
+  .dropdown-item, 
+  .navbar-text  {
+    // font-size: 18px;
     color: white;
   }
 
-  @media (min-width: 867px) {
-    .nav-link {
-      float: left;
-      align-items: center;
-    }
+  .navbar-light .navbar-nav .active {
+    font-weight: bold;
   }
-  @media (max-width: 867px) {
-    .nav-link {
-      align-items: center;
-      text-align: center;
-    }
+
+  .navbar-light .navbar-nav .active:before {
+    visibility: visible;
+    transform: scaleX(.8);
   }
-  .nav-link:before {
+
+  .nav-link:before, 
+  .dropdown-item:before {
     content: "";
     position: absolute;
     width: 100%;
     height: 4px;
     bottom: 0;
     left: 0;
-    background-color: #031d44;
+    background-color: white;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out;
   }
-  .nav-link:hover:before {
+  
+  .nav-link:hover:before, 
+  .dropdown-item:hover:before {
     visibility: visible;
-    transform: scaleX(1);
+    transform: scaleX(.8);
   }
 `;
 

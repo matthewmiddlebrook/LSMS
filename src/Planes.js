@@ -62,6 +62,7 @@ function PlanesPage() {
             <PlaneCard item={item} key={item.id} />
           ))}
           <PlanePlaceholder />
+          <PlanePlaceholder />
         </Row>
       );
     }

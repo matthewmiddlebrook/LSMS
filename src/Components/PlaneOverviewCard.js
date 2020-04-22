@@ -4,16 +4,8 @@ import Icofont from "react-icofont";
 
 function PlaneOverviewCard(props) {
 
-  console.log(props);
-
-  function handleChange(event) {
-    if (props.setKey != null & props.tab != null) {
-      props.setKey(props.tab);
-    }
-  }
-
   return (
-    <Button onClick={handleChange} className="text-left" variant="light" text="dark" style={{
+    <Card className="text-left" bg="light" text="dark" style={{
       width: "12em",
       flex: "auto",
       margin: "1em",
@@ -30,7 +22,6 @@ function PlaneOverviewCard(props) {
             <Card.Subtitle style={{ paddingTop: "1em" }}>{props.title}</Card.Subtitle>
           </Col>
           <Col className="d-sm-none" style={{ alignSelf: "flex-end" }}>
-
             <Card.Title style={{ marginBottom: "0" }}>{props.info}</Card.Title>
           </Col>
         </Row>
@@ -38,7 +29,7 @@ function PlaneOverviewCard(props) {
       <Card.Footer className="d-none d-sm-block" style={{ background: "none", borderTop: "none" }}>
         <Card.Title>{props.info}</Card.Title>
       </Card.Footer>
-    </Button>
+    </Card>
   );
 }
 
