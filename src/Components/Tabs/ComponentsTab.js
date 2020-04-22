@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
+import Icofont from "react-icofont";
 
 import LoadingScreen from "../LoadingScreen";
+import AddComponentModal from "../Modals/AddComponent";
 
 function ComponentsTab(props) {
   const [error, setError] = useState(null);
@@ -70,6 +72,10 @@ function ComponentsTab(props) {
         }
       );
   }, []);
+
+  const [show, setShow] = useState(false);
+  const addModalClose = () => setShow(false);
+  const addModalShow = () => setShow(true);
   
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -78,20 +84,19 @@ function ComponentsTab(props) {
   } else {
     return (
       <div>
-        <Button variant="secondary" style={{ float: "right", margin: "1em" }}>
-          Add Component
+        <Button variant="secondary" style={{ float: "right", margin: "1em" }} onClick={addModalShow}>
+          <Icofont icon="plus" /> Add Component
         </Button>
-        <div>
-          <BootstrapTable
-            bootstrap4
-            keyField="id"
-            columns={columns}
-            data={items}
-            defaultSorted={defaultSorted}
-            noDataIndication="Table is Empty"
-            wrapperClasses="table-responsive"
-          />
-        </div>
+        <BootstrapTable
+          bootstrap4
+          keyField="id"
+          columns={columns}
+          data={items}
+          defaultSorted={defaultSorted}
+          noDataIndication="Table is Empty"
+          wrapperClasses="table-responsive"
+        />
+        <AddComponentModal id={props.item.id} show={show} onHide={addModalClose} />
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Moment from "react-moment";
 
-import PlaneOverviewCard from "../PlaneOverviewCard";
+import PlaneOverviewCard from "../Cards/PlaneOverviewCard";
 import ComponentAlert from "../ComponentAlert";
 
 function PlaneOverviewCardPlaceholder(props) {

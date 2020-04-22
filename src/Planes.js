@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col, Button, Modal } from "react-bootstrap";
 import { BrowserRouter, NavLink, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Icofont from "react-icofont";
 import styled from "styled-components";
 
 import Layout from "./Components/Layout";
-import PlaneCard from "./Components/PlaneCard";
+import PlaneCard from "./Components/Cards/PlaneCard";
 import LoadingScreen from "./Components/LoadingScreen";
+import AddPlaneModal from "./Components/Modals/AddPlane";
 
 function PlanePlaceholder(props) {
   return (
@@ -74,6 +75,10 @@ function PlanesPage() {
     }
   `;
 
+  const [show, setShow] = useState(false);
+  const addModalClose = () => setShow(false);
+  const addModalShow = () => setShow(true);
+
   return (
     <React.Fragment>
       <Styles>
@@ -83,12 +88,13 @@ function PlanesPage() {
           </Helmet>
 
           <h1 style={{ display: "inline" }}>Planes</h1>
-          <Link to="/planes/add">
-            <Button style={{ float: "right" }} variant="outline-secondary">
-              <Icofont icon="plus" /> Add
+          {/* <Link to="/planes/add"> */}
+          <Button style={{ float: "right" }} variant="secondary" onClick={addModalShow}>
+            <Icofont icon="plus" /> Add
             </Button>
-          </Link>
+          {/* </Link> */}
           <GetContent />
+          <AddPlaneModal show={show} onHide={addModalClose} />
         </Layout>
       </Styles>
     </React.Fragment>

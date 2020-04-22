@@ -8,10 +8,10 @@ import { Card } from "react-bootstrap";
 
 const Styles = styled.div`
   .card {
-    background: red;
     display: inline-block;
     border-radius: 3px;
-
+    margin: 1em;
+    
     background: linear-gradient(to right, #2a77af 50%, white 50%);
     background-size: 200% 100%;
     background-position: right bottom;
@@ -27,7 +27,7 @@ const Styles = styled.div`
   }
   blockquote {
     color: #666;
-    margin: 0;
+    margin: 1em;
     padding-left: 3em;
     border-left: 0.5em #eee solid;
     padding-bottom: 15px;
@@ -46,7 +46,6 @@ const HomePage = () => (
         <div className="middle-section">
           <h2>Summary</h2>
           <Card style={{ width: "18rem" }}>
-            <div className="card" />
             <Card.Body>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
@@ -56,7 +55,6 @@ const HomePage = () => (
             </Card.Body>
           </Card>
           <Card style={{ width: "18rem" }}>
-            <div className="card" />
             <Card.Body>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
@@ -66,7 +64,6 @@ const HomePage = () => (
             </Card.Body>
           </Card>
           <Card style={{ width: "18rem" }}>
-            <div className="card" />
             <Card.Body>
               <Card.Title>Card Title</Card.Title>
               <Card.Text>
