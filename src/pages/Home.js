@@ -1,10 +1,9 @@
 import React from "react";
-import { Container, Jumbotron, Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { JumbotronHome } from "./Components/Jumbotron";
-import Layout from "./Components/Layout";
-import styled from "styled-components";
 import { Card } from "react-bootstrap";
+import styled from "styled-components";
+
+import Layout from "../components/Layout";
+import { JumbotronHome } from "../components/Jumbotron";
 
 const Styles = styled.div`
   .card {

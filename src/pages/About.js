@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "./Components/Layout";
-import { JumbotronAbout } from "./Components/Jumbotron";
 import styled from "styled-components";
-import { Form } from "react-bootstrap";
+
+import Layout from "../components/Layout";
+import { JumbotronAbout } from "../components/Jumbotron";
 
 const Styles = styled.div`
   .overview {

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Route, Switch } from 'react-router';
-import { Container, Tabs, Tab, Row, Col, Button } from "react-bootstrap";
-import { BrowserRouter, NavLink, Link } from "react-router-dom";
+import { Row, Col, Button } from "react-bootstrap";
+import { NavLink, Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import Icofont from "react-icofont";
 import { Helmet } from 'react-helmet';
 
-import Layout from "./Components/Layout";
-import ChangesTab from "./Components/Tabs/ChangesTab";
-import LocationsTab from "./Components/Tabs/LocationsTab";
-import ComponentsTab from "./Components/Tabs/ComponentsTab";
-import OverviewTab from "./Components/Tabs/OverviewTab";
+import Layout from "../components/Layout";
+import ChangesTab from "../components/tabs/ChangesTab";
+import LocationsTab from "../components/tabs/LocationsTab";
+import ComponentsTab from "../components/tabs/ComponentsTab";
+import OverviewTab from "../components/tabs/OverviewTab";
 
 function PlaneInfoPage(props) {
   const [key, setKey] = useState("overview");

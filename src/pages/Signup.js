@@ -1,8 +1,7 @@
 import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import Layout from "./Components/Layout";
 
-// https://reacttraining.com/react-router/web/example/auth-workflow
+import Layout from "../components/Layout";
 
 function SignupPage(props) {
   function submitForm(e) {
@@ -13,21 +12,27 @@ function SignupPage(props) {
 
   return (
     <Layout>
-      <h1>Login</h1>
+      <h1>Sign Up</h1>
       <Form onSubmit={submitForm.bind(this)}>
-        <Form.Group as={Row} controlId="formHorizontalEmail">
+        <Form.Group as={Row} controlId="formHorizontalFirstName">
           <Form.Label column sm={2}>
             First Name
           </Form.Label>
           <Col sm={10}>
             <Form.Control type="text" placeholder="First name" />
           </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} controlId="formHorizontalLastName">
           <Form.Label column sm={2}>
             Last Name
           </Form.Label>
           <Col sm={10}>
             <Form.Control type="text" placeholder="Last Name" />
           </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
             Email
           </Form.Label>
@@ -43,6 +48,9 @@ function SignupPage(props) {
           <Col sm={10}>
             <Form.Control type="password" placeholder="Password" />
           </Col>
+        </Form.Group>
+
+        <Form.Group as={Row} controlId="formHorizontalPasswordConfirm">
           <Form.Label column sm={2}>
             Confirm Password
           </Form.Label>

@@ -1,8 +1,7 @@
 import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import Layout from "./Components/Layout";
 
-// https://reacttraining.com/react-router/web/example/auth-workflow
+import Layout from "../components/Layout";
 
 function LoginPage(props) {
   function submitForm(e) {

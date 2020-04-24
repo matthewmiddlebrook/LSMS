@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
-import Layout from "../Layout";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 

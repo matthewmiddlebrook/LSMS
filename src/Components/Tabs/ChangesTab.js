@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import BootstrapTable from "react-bootstrap-table-next";
-import Icofont from "react-icofont";
 
 import LoadingScreen from "../LoadingScreen";
-import AddComponentModal from "../Modals/AddComponent";
+import AddComponentModal from "../modals/AddComponent";
 
 function ChangesTab(props) {
   const [error, setError] = useState(null);

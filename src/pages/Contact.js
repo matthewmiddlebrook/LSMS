@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "./Components/Layout";
-import { Form, Button } from "react-blockquote";
-import { JumbotronContact } from "./Components/Jumbotron";
+
+import Layout from "../components/Layout";
+import { JumbotronContact } from "../components/Jumbotron";
 
 const ContactPage = () => (
   <React.Fragment>

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Modal } from "react-bootstrap";
-import { BrowserRouter, NavLink, Link } from "react-router-dom";
+import { Row, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import Icofont from "react-icofont";
 import styled from "styled-components";
 
-import Layout from "./Components/Layout";
-import PlaneCard from "./Components/Cards/PlaneCard";
-import LoadingScreen from "./Components/LoadingScreen";
-import AddPlaneModal from "./Components/Modals/AddPlane";
+import Layout from "../components/Layout";
+import PlaneCard from "../components/cards/PlaneCard";
+import LoadingScreen from "../components/LoadingScreen";
+import AddPlaneModal from "../components/modals/AddPlane";
 
 function PlanePlaceholder(props) {
   return (

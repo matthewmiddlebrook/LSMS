@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import styled from "styled-components";
 
 const Styles = styled.div`
@@ -106,6 +106,11 @@ const Header = () => (
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/login"}>
               Login
+            </NavLink>
+          </Nav.Item>
+          <Nav.Item>
+            <NavLink className="nav-link" exact to={"/signup"}>
+              Sign Up
             </NavLink>
           </Nav.Item>
         </Nav>

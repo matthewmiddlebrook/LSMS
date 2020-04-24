@@ -4,7 +4,7 @@ import BootstrapTable from "react-bootstrap-table-next";
 import Icofont from "react-icofont";
 
 import LoadingScreen from "../LoadingScreen";
-import AddComponentModal from "../Modals/AddComponent";
+import AddComponentModal from "../modals/AddComponent";
 
 function ComponentsTab(props) {
   const [error, setError] = useState(null);

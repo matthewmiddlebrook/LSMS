@@ -1,7 +1,9 @@
 import React from "react";
 import { Jumbotron as Jumbo, Container, Button } from "react-bootstrap";
-import planecabin from "../assets/cabin2.jpg";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import planecabin from "../assets/cabin2.jpg";
 
 const Styles = styled.div`
 .jumbotron{
@@ -39,9 +41,11 @@ export const JumbotronHome = () => (
       <Container>
         <h1>Welcome</h1>
         <p>Lonestar is a great business</p>
-        <Button href="/signup" id="button">
-          Get Started
+        <Link to="/signup">
+          <Button id="button">
+            Get Started
         </Button>
+        </Link>
       </Container>
     </Jumbo>
   </Styles>

@@ -1,17 +1,16 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import Layout from "./Components/Layout";
 
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import HomePage from "./Home";
-import Products from "./Products";
-import AboutPage from "./About";
-import LoginPage from "./Login";
-import PlanesPage from "./Planes";
-import ContactPage from "./ContactPage";
-import PlaneInfoPage from "./PlaneInfo";
-import SignupPage from "./Signup";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomePage from "./pages/Home";
+import Products from "./pages/Products";
+import AboutPage from "./pages/About";
+import LoginPage from "./pages/Login";
+import PlanesPage from "./pages/Planes";
+import ContactPage from "./pages/Contact";
+import PlaneInfoPage from "./pages/PlaneInfo";
+import SignupPage from "./pages/Signup";
 
 function App() {
   return (

@@ -1,6 +1,7 @@
 import React from "react";
-import Layout from "./Components/Layout";
-import { JumbotronProducts } from "./Components/Jumbotron";
+
+import Layout from "../components/Layout";
+import { JumbotronProducts } from "../components/Jumbotron";
 
 const Products = () => (
   <React.Fragment>
