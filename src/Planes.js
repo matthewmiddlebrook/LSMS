@@ -76,6 +76,7 @@ function PlanesPage() {
   return (
     <React.Fragment>
       <Styles>
+        <div style={{ marginTop: "30px" }}></div>
         <Layout>
           <Helmet>
             <title>LSMS - Planes</title>

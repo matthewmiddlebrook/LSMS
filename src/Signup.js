@@ -13,7 +13,8 @@ function SignupPage(props) {
 
   return (
     <Layout>
-      <h1>Login</h1>
+      <div style={{ marginTop: "30px" }}></div>
+      <h1>Sign Up</h1>
       <Form onSubmit={submitForm.bind(this)}>
         <Form.Group as={Row} controlId="formHorizontalEmail">
           <Form.Label column sm={2}>
@@ -62,6 +63,9 @@ function SignupPage(props) {
             <Button type="submit">Sign Up</Button>
           </Col>
         </Form.Group>
+        <div>
+          Already have an account? <a href="/login">Login</a> instead!
+        </div>
       </Form>
     </Layout>
   );

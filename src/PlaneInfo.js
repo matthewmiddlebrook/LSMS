@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Route, Switch } from 'react-router';
+import { Route, Switch } from "react-router";
 import { Container, Tabs, Tab, Row, Col, Button } from "react-bootstrap";
 import { BrowserRouter, NavLink, Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import Icofont from "react-icofont";
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
 import ChangesTab from "./Components/Tabs/ChangesTab";
 import LocationsTab from "./Components/Tabs/LocationsTab";
@@ -25,13 +25,16 @@ function PlaneInfoPage(props) {
 
   return (
     <Container>
+      <div style={{ marginTop: "35px" }}></div>
       <Helmet>
         <title>LSMS - {item.name}</title>
       </Helmet>
       <Row style={{ marginBottom: "1em" }}>
         <Col md="auto" xs={{ span: "6" }}>
           <Link to="/planes">
-            <Button variant="outline-secondary" /* onClick={props.history.goBack} */ >
+            <Button
+              variant="outline-secondary" /* onClick={props.history.goBack} */
+            >
               <Icofont icon="arrow-left" /> Back
             </Button>
           </Link>
@@ -40,7 +43,12 @@ function PlaneInfoPage(props) {
           <h2 style={{ display: "inline" }}>{item.name}</h2>
         </Col>
         <Col md={{ order: 2, span: "auto" }} xs={{ order: 1, span: "6" }}>
-          <Link to={{ pathname: `/plane/${item.id}/settings`, state: { item: item } }}>
+          <Link
+            to={{
+              pathname: `/plane/${item.id}/settings`,
+              state: { item: item },
+            }}
+          >
             <Button style={{ float: "right" }} variant="outline-secondary">
               <Icofont icon="gear" /> Settings
             </Button>
@@ -69,20 +77,38 @@ function PlaneInfoPage(props) {
       </Tabs> */}
 
       <Nav variant="tabs" defaultActiveKey="/home">
-        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/overview`, state: { item: item } }}>
+        <NavLink
+          className="nav-link"
+          to={{ pathname: `/plane/${item.id}/overview`, state: { item: item } }}
+        >
           Overview
         </NavLink>
-        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/components`, state: { item: item } }}>
+        <NavLink
+          className="nav-link"
+          to={{
+            pathname: `/plane/${item.id}/components`,
+            state: { item: item },
+          }}
+        >
           Components
         </NavLink>
-        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/changes`, state: { item: item } }}>
+        <NavLink
+          className="nav-link"
+          to={{ pathname: `/plane/${item.id}/changes`, state: { item: item } }}
+        >
           Changes
         </NavLink>
-        <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/locations`, state: { item: item } }}>
+        <NavLink
+          className="nav-link"
+          to={{
+            pathname: `/plane/${item.id}/locations`,
+            state: { item: item },
+          }}
+        >
           Locations
         </NavLink>
       </Nav>
-      
+
       <Switch>
         <Route path="/plane/:id/overview">
           <OverviewTab item={item} />
@@ -97,7 +123,7 @@ function PlaneInfoPage(props) {
           <LocationsTab item={item} />
         </Route>
       </Switch>
-    </Container >
+    </Container>
   );
 }
 

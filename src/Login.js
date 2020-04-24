@@ -13,6 +13,7 @@ function LoginPage(props) {
 
   return (
     <Layout>
+      <div style={{ marginTop: "30px" }}></div>
       <h1>Login</h1>
       <Form onSubmit={submitForm.bind(this)}>
         <Form.Group as={Row} controlId="formHorizontalEmail">
@@ -44,6 +45,9 @@ function LoginPage(props) {
             <Button type="submit">Login</Button>
           </Col>
         </Form.Group>
+        <div>
+          Don't have an account yet? <a href="/signup">Sign up</a> instead
+        </div>
       </Form>
     </Layout>
   );

@@ -57,6 +57,9 @@ const Styles = styled.div`
     visibility: visible;
     transform: scaleX(1);
   }
+  .mr-auto {
+    float: right;
+  }
 `;
 
 const Header = () => (
@@ -71,27 +74,36 @@ const Header = () => (
       </LinkContainer>
       <Navbar.Toggle className="navbar-dark" aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav className="mr-auto"></Nav>
+        <Nav>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/"}>
               Home
             </NavLink>
           </Nav.Item>
-          <Nav.Item>
+        </Nav>
+        <Nav>
+          <Nav.Item style={{ float: "right" }}>
             <NavLink className="nav-link" exact to={"/products"}>
               Products
             </NavLink>
           </Nav.Item>
+        </Nav>
+        <Nav>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/planes"}>
               Planes
             </NavLink>
           </Nav.Item>
+        </Nav>
+        <Nav>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/about"}>
               About
             </NavLink>
           </Nav.Item>
+        </Nav>
+        <Nav>
           <Nav.Item>
             <NavLink className="nav-link" exact to={"/contact"}>
               Contact
@@ -109,5 +121,4 @@ const Header = () => (
     </Navbar>
   </Styles>
 );
-
 export default Header;
