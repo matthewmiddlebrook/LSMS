@@ -4,7 +4,7 @@ This is the repository for the LoneStar Meter Solutions Website created by Wildc
 
 # Documentation
 
-This documentation is provided for future developers of this project to understand how this website works and how to expand its funcionality.
+This documentation is provided for future developers of this project to understand how this website works and how to expand its functionality.
 
 ## Code Information
 
