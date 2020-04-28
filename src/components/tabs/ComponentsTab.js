@@ -5,17 +5,22 @@ import Icofont from "react-icofont";
 
 import LoadingScreen from "../LoadingScreen";
 import AddComponentModal from "../modals/AddComponent";
+import DeleteComponentModal from "../modals/DeleteComponent";
 
 function ComponentsTab(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+
+  const [showAddModal, setShowAddModal] = useState(false);
+  const addModalClose = () => setShowAddModal(false);
+  const addModalShow = () => setShowAddModal(true);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const deleteModalClose = () => setShowDeleteModal(false);
+  const deleteModalShow = () => setShowDeleteModal(true);
+
   const columns = [
-    {
-      dataField: "id",
-      text: "ID",
-      sort: true
-    },
     {
       dataField: "type",
       text: "Type",
@@ -42,19 +47,36 @@ function ComponentsTab(props) {
       sort: true
     }
   ];
+
+  const expandRow = {
+    onlyOneExpanding: true,
+    renderer: row => (
+      <div>
+        <p>{`This is component ${row.id}`}</p>
+        <p style={{ wordBreak: "break-word" }}>{JSON.stringify(row)}</p>
+        <Button variant="secondary" style={{ float: "right", margin: "1em" }} onClick={deleteModalShow}>
+          <Icofont icon="trash" /> Delete Component
+        </Button>
+        <DeleteComponentModal component={row} show={showDeleteModal} onHide={deleteModalClose} />
+      </div>
+    ),
+    showExpandColumn: true
+  };
+
   const defaultSorted = [
     {
       dataField: "type",
       order: "desc"
     }
   ];
+
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
     fetch(
       `https://us-central1-lonestarmeters.cloudfunctions.net/api/components?planeId=${
-        props.item.id
+      props.item.id
       }`
     )
       .then(res => res.json())
@@ -73,10 +95,6 @@ function ComponentsTab(props) {
       );
   }, []);
 
-  const [show, setShow] = useState(false);
-  const addModalClose = () => setShow(false);
-  const addModalShow = () => setShow(true);
-  
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -92,11 +110,12 @@ function ComponentsTab(props) {
           keyField="id"
           columns={columns}
           data={items}
+          expandRow={expandRow}
           defaultSorted={defaultSorted}
           noDataIndication="Table is Empty"
           wrapperClasses="table-responsive"
         />
-        <AddComponentModal id={props.item.id} show={show} onHide={addModalClose} />
+        <AddComponentModal id={props.item.id} show={showAddModal} onHide={addModalClose} />
       </div>
     );
   }

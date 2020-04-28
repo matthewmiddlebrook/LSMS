@@ -4,34 +4,36 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 const schema = yup.object({
-  manufacturerName: yup.string().required(),
-  planeId: yup.string().required(),
-  type: yup.string().required(),
-  currentTime: yup.number().required(),
-  model: yup.string().required(),
-  maxTime: yup.number().required(),
-  status: yup.string().required(),
+    manufacturerName: yup.string().required(),
+    planeId: yup.string().required(),
+    type: yup.string().required(),
+    currentTime: yup.number().required(),
+    model: yup.string().required(),
+    maxTime: yup.number().required(),
+    status: yup.string().required(),
 });
 
 function AddComponentModal(props) {
 
   const formik = useFormik({
     initialValues: {
-      "manufacturerName": "",
-      "planeId": props.id,
-      "type": "",
-      "currentTime": "",
-      "model": "",
-      "maxTime": "",
-      "status": "active"
+        "manufacturerName": "",
+        "planeId": props.id,
+        "type": "",
+        "currentTime": "",
+        "model": "",
+        "maxTime": "",
+        "status": "active"
     },
     onSubmit: values => {
 
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
+        body: JSON.stringify({'component':  values})
       };
+
+      console.log(requestOptions);
 
       fetch('https://us-central1-lonestarmeters.cloudfunctions.net/api/components', requestOptions)
         .then(async response => {
@@ -46,6 +48,7 @@ function AddComponentModal(props) {
           }
         })
         .catch(data => {
+          console.log(data);
           console.error('There was an error!', data.statusTexty);
         });
       props.onHide();

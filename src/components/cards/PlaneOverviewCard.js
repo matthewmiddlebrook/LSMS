@@ -2,6 +2,13 @@ import React from "react";
 import { Card, Row, Col, Button } from "react-bootstrap";
 import Icofont from "react-icofont";
 
+/**
+ * This card appears on the Plane Overview tab.
+ * @param {} props Requires the following:
+ * - icon - name of the Icofont icon
+ * - title - title text for the card
+ * - info - description for the card
+ */
 function PlaneOverviewCard(props) {
 
   return (
