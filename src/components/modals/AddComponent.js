@@ -2,35 +2,36 @@ import React from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 
 const schema = yup.object({
-    manufacturerName: yup.string().required(),
-    planeId: yup.string().required(),
-    type: yup.string().required(),
-    currentTime: yup.number().required(),
-    model: yup.string().required(),
-    maxTime: yup.number().required(),
-    status: yup.string().required(),
+  manufacturerName: yup.string().required(),
+  planeId: yup.string().required(),
+  type: yup.string().required(),
+  currentTime: yup.number().required(),
+  model: yup.string().required(),
+  maxTime: yup.number().required(),
+  status: yup.string().required(),
 });
 
 function AddComponentModal(props) {
 
   const formik = useFormik({
     initialValues: {
-        "manufacturerName": "",
-        "planeId": props.id,
-        "type": "",
-        "currentTime": "",
-        "model": "",
-        "maxTime": "",
-        "status": "active"
+      "manufacturerName": "",
+      "planeId": props.id,
+      "type": "",
+      "currentTime": "",
+      "model": "",
+      "maxTime": "",
+      "status": "active"
     },
     onSubmit: values => {
 
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({'component':  values})
+        body: JSON.stringify({ 'component': values })
       };
 
       console.log(requestOptions);
@@ -43,23 +44,30 @@ function AddComponentModal(props) {
           if (!response.ok) {
             // get error message from body or default to response status
             const error = (data && data.message) || response.status;
-            console.log(data);
+            console.log(error);
+            toast.error(`Failed to add component ${values.type} ${values.model}.`);
             return Promise.reject(data);
           }
         })
         .catch(data => {
           console.log(data);
-          console.error('There was an error!', data.statusTexty);
+          toast.error(`Failed to add component ${values.type} ${values.model}.`);
         });
       props.onHide();
+
+      toast.success(`Component ${values.type} ${values.model} created.`);
     },
-    validationSchema: schema
+    validationSchema: schema,
   });
 
   return (
 
     <Modal show={props.show} onHide={props.onHide}>
       <Form onSubmit={formik.handleSubmit}>
+        <Effect
+          formik={formik}
+          onSubmissionError={() => toast.error('Please fill out all fields correctly.', { toastId: 'componentFormError' })}
+        />
         <Modal.Header closeButton>
           <Modal.Title>Add Component</Modal.Title>
         </Modal.Header>
@@ -145,6 +153,16 @@ function AddComponentModal(props) {
       </Form>
     </Modal>
   );
+}
+
+function Effect(props) {
+  const effect = () => {
+    if (props.formik.submitCount > 0 && !props.formik.isValid) {
+      props.onSubmissionError();
+    }
+  };
+  React.useEffect(effect, [props.formik.submitCount]);
+  return null;
 }
 
 export default AddComponentModal;

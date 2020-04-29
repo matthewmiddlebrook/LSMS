@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Button, Row, Col, Modal } from "react-bootstrap";
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 
 const schema = yup.object({
   name: yup.string().required(),
@@ -27,7 +28,7 @@ function AddPlaneModal(props) {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values)
+        body: JSON.stringify({ 'plane': values })
       };
 
       fetch('https://us-central1-lonestarmeters.cloudfunctions.net/api/planes', requestOptions)
@@ -38,14 +39,18 @@ function AddPlaneModal(props) {
           if (!response.ok) {
             // get error message from body or default to response status
             const error = (data && data.message) || response.status;
-            console.log(data);
+            console.log(error);
+            toast.error(`Failed to add plane ${values.tailNumber} ${values.name}.`);
             return Promise.reject(data);
           }
         })
         .catch(data => {
-          console.error('There was an error!', data.statusTexty);
+          console.error(data);
+          toast.error(`Failed to add plane ${values.tailNumber} ${values.name}.`);
         });
-        props.onHide();
+      props.onHide();
+
+      toast.success(`Plane ${values.tailNumber} ${values.name} created.`);
     },
     validationSchema: schema
   });
@@ -54,6 +59,10 @@ function AddPlaneModal(props) {
 
     <Modal show={props.show} onHide={props.onHide}>
       <Form onSubmit={formik.handleSubmit}>
+        <Effect
+          formik={formik}
+          onSubmissionError={() => toast.error('Please fill out all fields correctly.', { toastId: 'planeFormError' })}
+        />
         <Modal.Header closeButton>
           <Modal.Title>Add Plane</Modal.Title>
         </Modal.Header>
@@ -139,6 +148,16 @@ function AddPlaneModal(props) {
       </Form>
     </Modal>
   );
+}
+
+function Effect(props) {
+  const effect = () => {
+    if (props.formik.submitCount > 0 && !props.formik.isValid) {
+      props.onSubmissionError();
+    }
+  };
+  React.useEffect(effect, [props.formik.submitCount]);
+  return null;
 }
 
 export default AddPlaneModal;

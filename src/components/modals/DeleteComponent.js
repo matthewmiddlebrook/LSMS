@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+import { toast } from 'react-toastify';
 
 function DeleteComponentModal(props) {
 
@@ -11,10 +12,11 @@ function DeleteComponentModal(props) {
     fetch(
       `https://us-central1-lonestarmeters.cloudfunctions.net/api/components/${props.component.id}`, requestOptions
     )
-      .then(res => res.json())
+      .then(res => JSON.parse(JSON.stringify(res)))
       .then(
         result => {
           props.onHide();
+          toast.success(`Component ${props.component.type} ${props.component.model} deleted.`);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -22,12 +24,12 @@ function DeleteComponentModal(props) {
         error => {
           console.log(error);
           props.onHide();
+          toast.error(`Failed to delete component ${props.component.type} ${props.component.model}.`);
         }
       );
   }
 
   return (
-
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>
         <Modal.Title>Delete Component</Modal.Title>
