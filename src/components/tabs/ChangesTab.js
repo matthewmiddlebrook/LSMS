@@ -4,10 +4,17 @@ import BootstrapTable from "react-bootstrap-table-next";
 import LoadingScreen from "../LoadingScreen";
 import AddComponentModal from "../modals/AddComponent";
 
+/**
+ * Tab for a plane's changed information.
+ * 
+ * Requires the following:
+ * @param {} item - Data of the plane
+ */
 function ChangesTab(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+
   const columns = [
     {
       dataField: "componentID",
@@ -45,19 +52,21 @@ function ChangesTab(props) {
       sort: true
     }
   ];
+
   const defaultSorted = [
     {
       dataField: "type",
       order: "desc"
     }
   ];
+
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
     fetch(
       `https://us-central1-lonestarmeters.cloudfunctions.net/api/changes?planeId=${
-        props.item.id
+      props.item.id
       }`
     )
       .then(res => res.json())
@@ -79,7 +88,7 @@ function ChangesTab(props) {
   const [show, setShow] = useState(false);
   const addModalClose = () => setShow(false);
   const addModalShow = () => setShow(true);
-  
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -87,9 +96,6 @@ function ChangesTab(props) {
   } else {
     return (
       <div>
-        {/* <Button variant="secondary" style={{ float: "right", margin: "1em" }} onClick={addModalShow}>
-          <Icofont icon="plus" /> Add Component
-        </Button> */}
         <BootstrapTable
           bootstrap4
           keyField="id"

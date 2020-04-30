@@ -3,6 +3,11 @@ import BootstrapTable from "react-bootstrap-table-next";
 
 import Mapbox from "../Mapbox";
 
+/**
+ * Tab for a plane's location history.
+ * 
+ * @todo Implement data retrieval.
+ */
 function LocationsTab() {
   const columns = [
     {

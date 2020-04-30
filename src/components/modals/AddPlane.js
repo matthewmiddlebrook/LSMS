@@ -12,6 +12,14 @@ const schema = yup.object({
   tailNumber: yup.string().required(),
 });
 
+
+/**
+ * Modal to add a new plane.
+ * 
+ * Requires the following:
+ * @param {} show - Hook to show the modal
+ * @param {} onHide - Hook to hide the modal
+ */
 function AddPlaneModal(props) {
 
   const formik = useFormik({

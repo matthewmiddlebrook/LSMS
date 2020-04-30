@@ -7,6 +7,12 @@ import LoadingScreen from "../LoadingScreen";
 import AddComponentModal from "../modals/AddComponent";
 import DeleteComponentModal from "../modals/DeleteComponent";
 
+/**
+ * Tab for a plane's components.
+ * 
+ * Requires the following:
+ * @param {} item - Data of the plane
+ */
 function ComponentsTab(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -54,8 +60,8 @@ function ComponentsTab(props) {
       <div>
         <p>{`This is component ${row.id}`}</p>
         <p style={{ wordBreak: "break-word" }}>{JSON.stringify(row)}</p>
-        <Button variant="secondary" style={{ float: "right", margin: "1em" }} onClick={deleteModalShow}>
-          <Icofont icon="trash" /> Delete Component
+        <Button variant="danger" style={{ float: "right", margin: "1em" }} onClick={deleteModalShow}>
+          <Icofont icon="minus" /> Delete Component
         </Button>
         <DeleteComponentModal component={row} show={showDeleteModal} onHide={deleteModalClose} />
       </div>

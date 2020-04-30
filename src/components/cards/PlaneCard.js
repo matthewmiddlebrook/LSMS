@@ -9,8 +9,9 @@ import Moment from "react-moment";
  * Card for each plane on the Planes dashboard.
  * 
  * Quickly shows information about the plane.
- * @param {} props Requires the following:
- * - item - Plane object
+ * 
+ * Requires the following:
+ * @param {} item - Plane object
  */
 function PlaneCard(props) {
   // const [modalShow, setModalShow] = React.useState(false);

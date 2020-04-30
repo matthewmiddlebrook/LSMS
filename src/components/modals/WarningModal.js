@@ -1,6 +1,15 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
+// THIS IS CURRENTLY UNUSED
+
+/**
+ * A modal to archive a plane.
+ * 
+ * Requires the following:
+ * @param {} show - Hook to show the modal
+ * @param {} onHide - Hook to hide the modal
+ */
 function WarningModal(props) {
   return (
     <Modal

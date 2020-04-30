@@ -3,9 +3,13 @@ import { Container, Row } from "react-bootstrap";
 import Moment from "react-moment";
 
 import PlaneOverviewCard from "../cards/PlaneOverviewCard";
-// import ComponentAlert from "../ComponentAlert";
 
-function PlaneOverviewCardPlaceholder(props) {
+/**
+ * A placeholder that keeps the cards square.
+ * 
+ * Contains an empty div with the same size as the normal cards.
+ */
+function PlaneOverviewCardPlaceholder() {
   return (
     <div
       style={{
@@ -18,11 +22,15 @@ function PlaneOverviewCardPlaceholder(props) {
   );
 }
 
+/**
+ * Tab for a plane's overview.
+ * 
+ * Requires the following:
+ * @param {} item - Data of the plane
+ */
 function OverviewTab(props) {
-  console.log(props.item);
   return (
     <Container>
-      {/* <ComponentAlert /> */}
       <Row style={{ display: "flex" }}>
         <PlaneOverviewCard title="Type" icon="info" info={props.item.model} />
         <PlaneOverviewCard title="Hobbs" icon="speed-meter" info={props.item.hobbsTime} />
@@ -30,7 +38,6 @@ function OverviewTab(props) {
           title="Tracked Components"
           icon="eye"
           info={props.item.components.length}
-          setKey={props.setKey}
           tab="components"
         />
         <PlaneOverviewCard
@@ -45,7 +52,6 @@ function OverviewTab(props) {
           title="Location"
           icon="location-pin"
           info={`${props.item.lastGPS._latitude}, ${props.item.lastGPS._longitude}`}
-          setKey={props.setKey}
           tab="locations"
         />
         <PlaneOverviewCardPlaceholder />

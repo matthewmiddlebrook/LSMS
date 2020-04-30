@@ -4,10 +4,11 @@ import Icofont from "react-icofont";
 
 /**
  * This card appears on the Plane Overview tab.
- * @param {} props Requires the following:
- * - icon - name of the Icofont icon
- * - title - title text for the card
- * - info - description for the card
+ * 
+ * Requires the following:
+ * @param {} icon - name of the Icofont icon
+ * @param {} title - title text for the card
+ * @param {} info - description for the card
  */
 function PlaneOverviewCard(props) {
 

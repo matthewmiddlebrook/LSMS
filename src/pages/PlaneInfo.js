@@ -11,6 +11,7 @@ import ChangesTab from "../components/tabs/ChangesTab";
 import LocationsTab from "../components/tabs/LocationsTab";
 import ComponentsTab from "../components/tabs/ComponentsTab";
 import OverviewTab from "../components/tabs/OverviewTab";
+import SettingsTab from "../components/tabs/SettingsTab";
 
 function PlaneInfoPage(props) {
   const [key, setKey] = useState("overview");
@@ -49,26 +50,6 @@ function PlaneInfoPage(props) {
         </Col>
       </Row>
 
-      {/* <Tabs
-        id="controlled-tab-example"
-        activeKey={key}
-        onSelect={k => setKey(k)}
-        mountOnEnter
-      >
-        <Tab eventKey="overview" title="Overview">
-          <OverviewTab item={item} setKey={setKey} />
-        </Tab>
-        <Tab eventKey="components" title="Components">
-          <ComponentsTab item={item} />
-        </Tab>
-        <Tab eventKey="changes" title="Changes">
-          <ChangesTab item={item} />
-        </Tab>
-        <Tab eventKey="locations" title="Locations">
-          <LocationsTab item={item} />
-        </Tab>
-      </Tabs> */}
-
       <Nav variant="tabs" defaultActiveKey="/home">
         <NavLink className="nav-link" to={{ pathname: `/plane/${item.id}/overview`, state: { item: item } }}>
           Overview
@@ -96,6 +77,9 @@ function PlaneInfoPage(props) {
         </Route>
         <Route path="/plane/:id/locations">
           <LocationsTab item={item} />
+        </Route>
+        <Route path="/plane/:id/settings">
+          <SettingsTab item={item} />
         </Route>
       </Switch>
     </Layout>

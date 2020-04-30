@@ -14,6 +14,14 @@ const schema = yup.object({
   status: yup.string().required(),
 });
 
+/**
+ * Modal to add a new component.
+ * 
+ * Requires the following:
+ * @param {} id - ID of the plane
+ * @param {} show - Hook to show the modal
+ * @param {} onHide - Hook to hide the modal
+ */
 function AddComponentModal(props) {
 
   const formik = useFormik({
